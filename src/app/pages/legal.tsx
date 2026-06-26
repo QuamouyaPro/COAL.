@@ -12,23 +12,7 @@ const EMBER = '#E8500A';
 export default function Legal() {
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 overflow-x-hidden">
-      {/* Nav minimale */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-900/70">
-        <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="font-black text-xl tracking-tight">
-            COAL<span style={{ color: EMBER }}>.</span>
-          </Link>
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors text-xs tracking-[0.2em] uppercase font-medium"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            Accueil
-          </Link>
-        </div>
-      </nav>
-
-      <main id="contenu" className="pt-36 pb-32 px-6">
+      <main id="contenu" className="pt-28 pb-32 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

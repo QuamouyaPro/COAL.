@@ -6,15 +6,11 @@ import coalImage from '../../imports/Gemini_Generated_Image_wio0tawio0tawio0.png
 import coalImageClean from '../../imports/Gemini_Generated_Image_syac7isyac7isyac.png';
 import coalImageCTA from '../../imports/bg_final_cta.png';
 import coalImageSection3 from '../../imports/bg_section3.PNG';
-import coalLogo from '../../imports/logo_with_COAL.png';
-import coalLogoClean from '../../imports/logo_without_COAL.png';
 import { QuizFunnel } from '../components/quiz-funnel';
 import { ContactModal } from '../components/contact-modal';
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [showLogo, setShowLogo] = useState(false);
-  const [logoHover, setLogoHover] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -22,98 +18,24 @@ export default function Home() {
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 1.1]);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    const handleScroll = () => {
-      setShowLogo(window.scrollY > window.innerHeight * 0.85);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
+    const onMouseMove = (e: MouseEvent) => setMousePosition({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', onMouseMove);
+    return () => window.removeEventListener('mousemove', onMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const onQuiz = () => setQuizOpen(true);
+    const onContact = () => setContactOpen(true);
+    window.addEventListener('coal:open-quiz', onQuiz);
+    window.addEventListener('coal:open-contact', onContact);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('coal:open-quiz', onQuiz);
+      window.removeEventListener('coal:open-contact', onContact);
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 overflow-x-hidden">
-      {/* Fixed Logo — appears when scrolled past hero */}
-      <div
-        className="fixed top-6 left-6 z-50 flex items-center gap-3"
-        onMouseEnter={() => setLogoHover(true)}
-        onMouseLeave={() => setLogoHover(false)}
-      >
-        <motion.div
-          className="h-12 overflow-hidden"
-          initial={false}
-          animate={{
-            maxWidth: showLogo ? 200 : 0,
-            marginRight: showLogo ? 0 : -12,
-          }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <motion.div
-            className="relative h-12 cursor-pointer"
-            initial={false}
-            animate={{
-              opacity: showLogo ? 1 : 0,
-              y: showLogo ? 0 : -12,
-              scale: showLogo ? 1 : 0.9,
-              pointerEvents: showLogo ? 'auto' : 'none',
-            }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <img
-              src={coalLogo}
-              alt="COAL"
-              className="h-12 w-auto block transition-opacity duration-300"
-              style={{ opacity: logoHover ? 0 : 1 }}
-            />
-            <img
-              src={coalLogoClean}
-              alt=""
-              className="h-12 w-auto absolute top-0 left-0 transition-opacity duration-300"
-              style={{ opacity: logoHover ? 1 : 0 }}
-            />
-          </motion.div>
-        </motion.div>
-        <motion.span
-          className="font-black text-2xl tracking-tight text-zinc-100 whitespace-nowrap"
-          initial={false}
-          animate={{
-            opacity: !showLogo || logoHover ? 1 : 0,
-            x: !showLogo || logoHover ? 0 : -8,
-            letterSpacing: !showLogo || logoHover ? '-0.02em' : '0.1em',
-          }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          COAL<span style={{ color: '#E8500A' }}>.</span>
-        </motion.span>
-      </div>
-
-      {/* Fixed Nav — top right */}
-      <motion.div
-        className="fixed top-6 right-6 z-50 flex items-center gap-6"
-        initial={false}
-        animate={{ opacity: showLogo ? 1 : 0, y: showLogo ? 0 : -8 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <Link
-          to="/produits"
-          className="flex items-center gap-2 text-zinc-400 hover:text-zinc-100 transition-colors text-sm tracking-widest uppercase font-medium"
-        >
-          Nos produits
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
-        <button
-          onClick={() => setContactOpen(true)}
-          className="text-zinc-500 hover:text-zinc-100 transition-colors text-sm tracking-widest uppercase font-medium"
-        >
-          Contact
-        </button>
-      </motion.div>
-
       {/* Hero Section */}
       <section id="contenu" className="relative min-h-[100dvh] flex flex-col justify-end overflow-hidden">
         {/* Dynamic Background Image — COAL reveal effect */}

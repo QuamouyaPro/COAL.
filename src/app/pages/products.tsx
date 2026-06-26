@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import {
@@ -6,8 +6,6 @@ import {
   Cpu, LayoutDashboard, BookOpen, Zap, Package,
   Repeat, Search, Workflow, Shield,
 } from 'lucide-react';
-import coalLogo from '../../imports/logo_with_COAL.png';
-import coalLogoClean from '../../imports/logo_without_COAL.png';
 import { QuizFunnel } from '../components/quiz-funnel';
 import { ContactModal } from '../components/contact-modal';
 import { WorkflowDemo } from '../components/workflow-demo';
@@ -18,69 +16,23 @@ const EMBER = '#E8500A';
 export default function Products() {
   const [quizOpen, setQuizOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
-  const [logoHover, setLogoHover] = useState(false);
+
+  useEffect(() => {
+    const onQuiz = () => setQuizOpen(true);
+    const onContact = () => setContactOpen(true);
+    window.addEventListener('coal:open-quiz', onQuiz);
+    window.addEventListener('coal:open-contact', onContact);
+    return () => {
+      window.removeEventListener('coal:open-quiz', onQuiz);
+      window.removeEventListener('coal:open-contact', onContact);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 overflow-x-hidden">
 
-      {/* ── Fixed Nav ─────────────────────────────────────────── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-900/70">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="relative h-9 block flex-shrink-0"
-            onMouseEnter={() => setLogoHover(true)}
-            onMouseLeave={() => setLogoHover(false)}
-          >
-            <img
-              src={coalLogo}
-              alt="COAL"
-              className="h-9 w-auto transition-opacity duration-300"
-              style={{ opacity: logoHover ? 0 : 1 }}
-            />
-            <img
-              src={coalLogoClean}
-              alt=""
-              className="h-9 w-auto absolute top-0 left-0 transition-opacity duration-300"
-              style={{ opacity: logoHover ? 1 : 0 }}
-            />
-          </Link>
-
-          {/* Nav links */}
-          <div className="flex items-center gap-8">
-            <Link
-              to="/"
-              className="text-zinc-500 hover:text-zinc-100 transition-colors text-xs tracking-[0.2em] uppercase font-medium hidden sm:block"
-            >
-              Accueil
-            </Link>
-            <span
-              className="text-xs tracking-[0.2em] uppercase font-black"
-              style={{ color: EMBER, borderBottom: `2px solid ${EMBER}`, paddingBottom: '2px' }}
-            >
-              Produits
-            </span>
-            <button
-              onClick={() => setContactOpen(true)}
-              className="text-zinc-500 hover:text-zinc-100 transition-colors text-xs tracking-[0.2em] uppercase font-medium hidden sm:block"
-            >
-              Contact
-            </button>
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setQuizOpen(true)}
-              className="px-5 py-2.5 bg-zinc-100 text-zinc-950 font-black text-xs tracking-wider uppercase hover:bg-zinc-300 transition-colors"
-            >
-              Audit Gratuit
-            </motion.button>
-          </div>
-        </div>
-      </nav>
-
       {/* ── Hero ──────────────────────────────────────────────── */}
-      <section id="contenu" className="pt-36 pb-24 px-6">
+      <section id="contenu" className="pt-28 pb-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
