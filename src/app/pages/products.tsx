@@ -4,7 +4,8 @@ import { motion } from 'motion/react';
 import {
   ArrowLeft, ArrowRight, Check, ChevronRight,
   Cpu, LayoutDashboard, BookOpen, Zap, Package,
-  Repeat, Search, Workflow, Shield,
+  Repeat, Search, Workflow, Shield, MapPin, Clock,
+  FileText, PenLine, Rocket, X,
 } from 'lucide-react';
 import { QuizFunnel } from '../components/quiz-funnel';
 import { ContactModal } from '../components/contact-modal';
@@ -43,16 +44,16 @@ export default function Products() {
               L'Écosystème COAL
             </p>
             <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-[0.9] mb-10">
-              Deux produits<span style={{ color: EMBER }}>.</span>
+              Deux offres<span style={{ color: EMBER }}>.</span>
               <br />
-              <span className="text-zinc-500">Une stratégie.</span>
+              <span className="text-zinc-500">Un seul objectif.</span>
             </h1>
             <p className="text-xl text-zinc-400 max-w-3xl leading-relaxed">
-              Notre écosystème hybride stratégiquement{' '}
-              <span className="text-zinc-100 font-medium">le service premium sur-mesure</span>,{' '}
-              la création de contenu et{' '}
-              <span className="text-zinc-100 font-medium">le logiciel SaaS scalable</span>{' '}
-              pour asseoir notre positionnement d'orchestrateur IA de référence.
+              Un modèle pensé pour deux profils :{' '}
+              <span className="text-zinc-100 font-medium">l'offre Générique</span> pour tester sans engagement,
+              et{' '}
+              <span className="text-zinc-100 font-medium">l'offre Custom</span> pour les organisations
+              qui veulent une vraie plus-value livrée en 7 jours.
             </p>
           </motion.div>
 
@@ -61,18 +62,18 @@ export default function Products() {
             {[
               {
                 num: '01',
-                badge: 'One Time Payment',
+                badge: 'One-time Payment ★',
                 badgeColor: EMBER,
-                title: 'La Prestation COAL\nSur-Mesure',
-                desc: "L'offre premium d'installation complète — audit stratégique, workflows personnalisés, orchestrateur IA multicanal, Command Center et playbooks. Votre bras droit numérique, clé en main.",
+                title: 'Offre Custom\nSur-Mesure',
+                desc: "Votre orchestration conçue pour vos processus réels, déployée sur votre propre infrastructure en 7 jours ouvrés. Audit terrain gratuit — vous signez uniquement si le devis vous convient.",
                 anchor: 'product-01',
               },
               {
                 num: '02',
-                badge: 'Abonnement récurrent',
+                badge: 'Abonnement mensuel',
                 badgeColor: '#71717a',
-                title: 'Workflows Main Stream\n& Playbooks',
-                desc: "Le produit scalable. Bibliothèque de workflows pré-conçus et playbooks no-code (Make, n8n, Zapier) en libre accès, hébergés et maintenus par COAL pour adresser un public plus large.",
+                title: 'Offre Générique\nSans Engagement',
+                desc: "L'entrée zéro risque. Questionnaire en ligne → rapport personnalisé avec 3 quick wins → abonnement 199–399 € HT/mois résiliable à tout moment. Hébergé et maintenu par COAL.",
                 anchor: 'product-02',
               },
             ].map((p, i) => (
@@ -109,7 +110,7 @@ export default function Products() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          PRODUCT 01
+          PRODUCT 01 — CUSTOM
       ══════════════════════════════════════════════════════════ */}
       <section id="product-01" className="scroll-mt-24 py-32 px-6 border-t border-zinc-900">
         <div className="max-w-6xl mx-auto">
@@ -132,31 +133,61 @@ export default function Products() {
                   className="uppercase tracking-[0.25em] text-xs font-bold mb-3"
                   style={{ color: EMBER }}
                 >
-                  One Time Payment — Offre Premium
+                  One-time Payment — Offre Principale ★
                 </p>
                 <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                  La Prestation COAL
+                  Offre Custom
                   <br />
                   Sur-Mesure<span style={{ color: EMBER }}>.</span>
                 </h2>
               </div>
             </div>
 
-            <p className="text-lg text-zinc-400 max-w-3xl leading-relaxed mb-20 pl-8 border-l-2 border-zinc-800">
-              Une prestation packagée en paiement unique qui comprend l'installation complète de
-              l'agent COAL en tant que bras droit numérique, la configuration de workflows
-              ultra-personnalisés, la fourniture des playbooks, et une{' '}
-              <span className="text-zinc-100">garantie de résultats</span>.
+            <p className="text-lg text-zinc-400 max-w-3xl leading-relaxed mb-16 pl-8 border-l-2 border-zinc-800">
+              Un paiement unique. Votre orchestration est conçue entièrement sur mesure pour vos
+              processus réels, déployée sur votre propre infrastructure, et opérationnelle en{' '}
+              <span className="text-zinc-100">7 jours ouvrés</span> à partir de la signature.
+              Pas d'abonnement COAL — l'infrastructure vous appartient.
             </p>
 
-            {/* ── Phases timeline ── */}
-            <div className="relative">
-              {/* Connector line (desktop) */}
-              <div className="absolute left-[2rem] top-10 bottom-10 w-px bg-zinc-800 hidden md:block" />
+            {/* ── Tunnel commercial (5 étapes) ── */}
+            <div className="mb-20">
+              <p className="uppercase tracking-[0.3em] text-xs text-zinc-500 mb-8">Le parcours client</p>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-zinc-800">
+                {[
+                  { icon: <FileText className="w-5 h-5" strokeWidth={1.5} />, step: '01', label: 'Formulaire', sub: 'de demande' },
+                  { icon: <MapPin className="w-5 h-5" strokeWidth={1.5} />, step: '02', label: 'Audit terrain', sub: 'gratuit' },
+                  { icon: <PenLine className="w-5 h-5" strokeWidth={1.5} />, step: '03', label: 'Devis', sub: '& signature' },
+                  { icon: <Clock className="w-5 h-5" strokeWidth={1.5} />, step: '04', label: 'Conception', sub: '7 jours' },
+                  { icon: <Rocket className="w-5 h-5" strokeWidth={1.5} />, step: '05', label: 'Livraison', sub: '& formation' },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.step}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="bg-zinc-950 p-6 flex flex-col gap-3"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-zinc-600">{s.icon}</span>
+                      <span className="font-mono text-xs text-zinc-600">{s.step}</span>
+                    </div>
+                    <div>
+                      <p className="font-black text-sm text-zinc-100">{s.label}</p>
+                      <p className="text-xs text-zinc-500">{s.sub}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
 
+            {/* ── Phases ── */}
+            <div className="relative">
+              <div className="absolute left-[2rem] top-10 bottom-10 w-px bg-zinc-800 hidden md:block" />
               <div className="space-y-2">
 
-                {/* ─ Phase 01 ─ */}
+                {/* ─ Phase 01 — Audit terrain ─ */}
                 <motion.div
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -166,41 +197,27 @@ export default function Products() {
                 >
                   <div className="flex justify-center md:justify-start">
                     <div className="w-16 h-16 border border-zinc-700 bg-zinc-950 flex items-center justify-center flex-shrink-0 z-10">
-                      <Search className="w-6 h-6 text-zinc-400" strokeWidth={1.5} />
+                      <MapPin className="w-6 h-6 text-zinc-400" strokeWidth={1.5} />
                     </div>
                   </div>
                   <div className="pb-16">
                     <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">
-                      Le point d'entrée stratégique
+                      Gratuit · Sans engagement
                     </p>
                     <h3 className="text-3xl font-black tracking-tight mb-5">
-                      Audit "Agentic Readiness"
-                      <span style={{ color: EMBER }}>.</span>
+                      Audit Terrain<span style={{ color: EMBER }}>.</span>
                     </h3>
                     <p className="text-zinc-400 leading-relaxed mb-8 max-w-2xl">
-                      Plutôt que de vendre une technologie abstraite, nous vendons un{' '}
-                      <span className="text-zinc-100">diagnostic métier</span>. Ce service cartographie les
-                      processus actuels du client pour identifier les gisements de productivité et
-                      calculer un retour sur investissement potentiel.
+                      Avant tout engagement financier, COAL se déplace sur site pour comprendre vos
+                      processus réels. Le client signe <span className="text-zinc-100">uniquement s'il valide le devis</span>{' '}
+                      remis à l'issue de cette rencontre.
                     </p>
-                    <div className="grid sm:grid-cols-2 gap-px bg-zinc-800 max-w-2xl">
+                    <div className="grid sm:grid-cols-2 gap-px bg-zinc-800 max-w-2xl mb-10">
                       {[
-                        {
-                          label: 'Cartographie des processus',
-                          desc: 'Analyse complète de vos flux opérationnels actuels',
-                        },
-                        {
-                          label: 'Calcul du ROI potentiel',
-                          desc: 'Quantification précise des gains de productivité',
-                        },
-                        {
-                          label: '3 à 5 quick-wins ciblés',
-                          desc: 'Qualification leads, relances, tris de tickets…',
-                        },
-                        {
-                          label: 'Déployables en < 14 jours',
-                          desc: 'Résultats concrets visibles en moins de deux semaines',
-                        },
+                        { label: 'Rencontre sur site', desc: 'Découverte des processus métier en conditions réelles' },
+                        { label: 'Mapping des workflows', desc: 'Identification des points de friction et des quick wins' },
+                        { label: 'Matrice impact / effort', desc: 'Priorisation rigoureuse des automatisations à fort ROI' },
+                        { label: 'ROI personnalisé chiffré', desc: 'Temps gagné par mois, coût évité — chiffres réels' },
                       ].map((item) => (
                         <div key={item.label} className="bg-zinc-950 p-6 hover:bg-zinc-900/40 transition-colors">
                           <div className="flex items-start gap-3 mb-2">
@@ -222,7 +239,7 @@ export default function Products() {
                   </div>
                 </motion.div>
 
-                {/* ─ Phase 02 ─ */}
+                {/* ─ Phase 02 — Conception 7 jours ─ */}
                 <motion.div
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -237,40 +254,57 @@ export default function Products() {
                   </div>
                   <div className="pb-16">
                     <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">
-                      Sur-mesure & ultra-personnalisé
+                      Après signature du devis
                     </p>
                     <h3 className="text-3xl font-black tracking-tight mb-5">
-                      Conception des Workflows
-                      <span style={{ color: EMBER }}>.</span>
+                      Conception & Déploiement<span style={{ color: EMBER }}>.</span>
+                      <span className="block text-xl text-zinc-500 font-bold mt-1">7 jours ouvrés · Livraison garantie</span>
                     </h3>
                     <p className="text-zinc-400 leading-relaxed mb-8 max-w-2xl">
-                      À partir des quick-wins identifiés lors de l'audit, nous concevons et déployons
-                      des workflows entièrement personnalisés à votre secteur, votre stack et vos
-                      processus spécifiques.
+                      À la réception du paiement, un mail de lancement est envoyé au client.
+                      La conception démarre ce jour-là — pas de délai, pas d'attente.
                     </p>
-                    <WorkflowDemo />
 
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      {[
-                        'Qualification de leads',
-                        'Relance client automatisée',
-                        'Tri de tickets support',
-                        'Reporting automatique',
-                        'Onboarding client',
-                        'Suivi contrats',
-                      ].map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-4 py-2 border border-zinc-700 text-zinc-300 text-sm tracking-wide hover:border-zinc-500 transition-colors"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    <div className="grid md:grid-cols-2 gap-px bg-zinc-800 max-w-2xl mb-10">
+                      <div className="bg-zinc-950 p-6">
+                        <p className="font-mono text-xs text-zinc-500 mb-3 uppercase tracking-widest">Remote — 5 jours</p>
+                        <ul className="space-y-2">
+                          {[
+                            'Setup VPS & installation n8n',
+                            'Développement des workflows',
+                            'Intégration APIs (CRM, Drive…)',
+                            'Documentation technique complète',
+                          ].map((t) => (
+                            <li key={t} className="flex items-start gap-2 text-sm text-zinc-300">
+                              <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-zinc-500" strokeWidth={2.5} />
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-zinc-950 p-6" style={{ borderLeft: `2px solid ${EMBER}30` }}>
+                        <p className="font-mono text-xs mb-3 uppercase tracking-widest" style={{ color: EMBER }}>Sur site — 2 jours</p>
+                        <ul className="space-y-2">
+                          {[
+                            'Tests en conditions réelles',
+                            'Ajustements finaux avec les équipes',
+                            'Formation des utilisateurs',
+                            'Remise docs + conditions de garantie',
+                          ].map((t) => (
+                            <li key={t} className="flex items-start gap-2 text-sm text-zinc-300">
+                              <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: EMBER }} strokeWidth={2.5} />
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
+
+                    <WorkflowDemo />
                   </div>
                 </motion.div>
 
-                {/* ─ Phase 03 — The big one ─ */}
+                {/* ─ Phase 03 — Command Center ─ */}
                 <motion.div
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -291,118 +325,73 @@ export default function Products() {
                       className="uppercase tracking-[0.2em] text-xs font-bold mb-2"
                       style={{ color: EMBER }}
                     >
-                      Le cœur SaaS récurrent
+                      Inclus dans chaque orchestration
                     </p>
                     <h3 className="text-3xl font-black tracking-tight mb-5">
                       COAL Orchestrator &<br />
                       Command Center<span style={{ color: EMBER }}>.</span>
                     </h3>
                     <p className="text-zinc-400 leading-relaxed mb-10 max-w-2xl">
-                      La plateforme d'orchestration récurrente animée par un agent IA multicanal. Il
-                      interprète vos demandes en langage naturel, agit sur vos outils existants et
-                      lance les workflows — pendant que vous supervisez depuis votre tableau de bord.
+                      L'agent IA interprète vos demandes en langage naturel via Slack, WhatsApp ou email,
+                      agit sur vos outils existants et lance les workflows — pendant que vous supervisez
+                      depuis votre tableau de bord Command Center.
                     </p>
 
-                    {/* Sub-components */}
                     <div className="space-y-px bg-zinc-800">
-
-                      {/* Agent Multicanal */}
                       <div className="bg-zinc-950 p-8 hover:bg-zinc-900/50 transition-colors duration-500">
                         <div className="flex items-start gap-6">
-                          <div className="flex-shrink-0 mt-0.5">
-                            <Cpu className="w-8 h-8 text-zinc-400" strokeWidth={1.5} />
-                          </div>
+                          <Cpu className="w-8 h-8 text-zinc-400 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-3">
                               <h4 className="text-xl font-black">Agent IA Multicanal</h4>
-                              <span
-                                className="px-2 py-0.5 text-xs font-bold tracking-wider uppercase"
-                                style={{ backgroundColor: `${EMBER}20`, color: EMBER, border: `1px solid ${EMBER}40` }}
-                              >
-                                Inclus
-                              </span>
+                              <span className="px-2 py-0.5 text-xs font-bold tracking-wider uppercase" style={{ backgroundColor: `${EMBER}20`, color: EMBER, border: `1px solid ${EMBER}40` }}>Inclus</span>
                             </div>
-                            <p className="text-zinc-400 leading-relaxed mb-5">
-                              Accessible via{' '}
-                              <strong className="text-zinc-100">Slack, WhatsApp et email</strong>,
-                              l'agent interprète vos demandes en langage naturel et exécute les
-                              actions sur vos outils existants — CRM, Google Drive, et plus.
+                            <p className="text-zinc-400 leading-relaxed mb-4">
+                              Accessible via <strong className="text-zinc-100">Slack, WhatsApp et email</strong>.
+                              Interprète le langage naturel. Agit sur vos outils — CRM, Google Drive, et plus.
+                              Propulsé par <strong className="text-zinc-100">Claude API via OpenRouter</strong>.
                             </p>
                             <div className="flex gap-3 flex-wrap">
                               {['Slack', 'WhatsApp', 'Email', 'CRM', 'Google Drive'].map((c) => (
-                                <span
-                                  key={c}
-                                  className="px-3 py-1.5 bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs tracking-widest uppercase font-medium"
-                                >
-                                  {c}
-                                </span>
+                                <span key={c} className="px-3 py-1.5 bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs tracking-widest uppercase font-medium">{c}</span>
                               ))}
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Command Center */}
                       <div className="bg-zinc-950 p-8 hover:bg-zinc-900/50 transition-colors duration-500">
                         <div className="flex items-start gap-6">
-                          <div className="flex-shrink-0 mt-0.5">
-                            <LayoutDashboard className="w-8 h-8 text-zinc-400" strokeWidth={1.5} />
-                          </div>
+                          <LayoutDashboard className="w-8 h-8 text-zinc-400 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-3">
                               <h4 className="text-xl font-black">Command Center</h4>
-                              <span
-                                className="px-2 py-0.5 text-xs font-bold tracking-wider uppercase"
-                                style={{ backgroundColor: `${EMBER}20`, color: EMBER, border: `1px solid ${EMBER}40` }}
-                              >
-                                Inclus
-                              </span>
+                              <span className="px-2 py-0.5 text-xs font-bold tracking-wider uppercase" style={{ backgroundColor: `${EMBER}20`, color: EMBER, border: `1px solid ${EMBER}40` }}>Inclus</span>
                             </div>
-                            <p className="text-zinc-400 leading-relaxed mb-5">
-                              L'interface de supervision vitale où le dirigeant suit les{' '}
-                              <strong className="text-zinc-100">logs en temps réel</strong>, pilote ses{' '}
-                              <strong className="text-zinc-100">KPI opérationnels</strong> et approuve
-                              les actions critiques en attente — garantissant une gouvernance totale.
+                            <p className="text-zinc-400 leading-relaxed mb-4">
+                              Interface de supervision : logs en temps réel, KPI opérationnels, approbation
+                              des actions critiques. <strong className="text-zinc-100">Gouvernance totale</strong> — l'humain décide toujours.
                             </p>
                             <div className="grid grid-cols-3 gap-px bg-zinc-800 max-w-lg">
                               {['Logs temps réel', 'KPI & Métriques', 'Approbation actions'].map((f) => (
-                                <div
-                                  key={f}
-                                  className="bg-zinc-950 px-4 py-3 text-zinc-300 text-xs font-bold text-center tracking-wide uppercase"
-                                >
-                                  {f}
-                                </div>
+                                <div key={f} className="bg-zinc-950 px-4 py-3 text-zinc-300 text-xs font-bold text-center tracking-wide uppercase">{f}</div>
                               ))}
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Playbooks */}
                       <div className="bg-zinc-950 p-8 hover:bg-zinc-900/50 transition-colors duration-500">
                         <div className="flex items-start gap-6">
-                          <div className="flex-shrink-0 mt-0.5">
-                            <BookOpen className="w-8 h-8 text-zinc-400" strokeWidth={1.5} />
-                          </div>
+                          <BookOpen className="w-8 h-8 text-zinc-400 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-3">
                               <h4 className="text-xl font-black">Playbooks Sur-Mesure</h4>
-                              <span
-                                className="px-2 py-0.5 text-xs font-bold tracking-wider uppercase"
-                                style={{ backgroundColor: `${EMBER}20`, color: EMBER, border: `1px solid ${EMBER}40` }}
-                              >
-                                Inclus
-                              </span>
+                              <span className="px-2 py-0.5 text-xs font-bold tracking-wider uppercase" style={{ backgroundColor: `${EMBER}20`, color: EMBER, border: `1px solid ${EMBER}40` }}>Inclus</span>
                             </div>
                             <p className="text-zinc-400 leading-relaxed">
-                              Livrés avec chaque installation, les playbooks expliquent au client{' '}
-                              <strong className="text-zinc-100">comment comprendre COAL</strong> et
-                              comment{' '}
-                              <strong className="text-zinc-100">
-                                connecter lui-même de nouveaux processus
-                              </strong>{' '}
-                              à l'orchestrateur. L'autonomie totale, sans dépendance permanente au
-                              prestataire.
+                              Livrés à la remise, les playbooks expliquent comment comprendre COAL et
+                              connecter de nouveaux processus — <strong className="text-zinc-100">autonomie totale, zéro dépendance</strong>.
                             </p>
                           </div>
                         </div>
@@ -413,32 +402,118 @@ export default function Products() {
               </div>
             </div>
 
+            {/* ── Pricing Custom ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-20 pt-16 border-t border-zinc-900"
+            >
+              <p className="uppercase tracking-[0.3em] text-xs text-zinc-500 mb-10">Tarification transparente</p>
+
+              {/* 3 composantes */}
+              <div className="space-y-px bg-zinc-800 max-w-3xl mb-8">
+                {[
+                  {
+                    num: '01',
+                    label: 'Mise en place de l\'écosystème technique',
+                    detail: 'Serveur VPS Hostinger (2 ans) + provision OpenRouter + installation n8n, DNS, sécurisation',
+                    price: '280 €',
+                    note: 'Coûts réels refacturés · Disparaît dès la 2e orchestration',
+                    highlight: false,
+                  },
+                  {
+                    num: '02',
+                    label: 'Conception & déploiement',
+                    detail: '5j remote (setup, développement, intégrations, docs) + 2j sur site (tests, formation, livraison)',
+                    price: '2 450 €',
+                    note: '350 €/j × 7 jours ouvrés',
+                    highlight: false,
+                  },
+                  {
+                    num: '03',
+                    label: 'Garantie de bon fonctionnement — 1 an',
+                    detail: 'Bugs liés à la conception COAL couverts 12 mois · Intervention sous 48h ouvrées',
+                    price: '490 €',
+                    note: '1ʳᵉ orchestration · +90 € par orchestration suivante',
+                    highlight: true,
+                  },
+                ].map((row) => (
+                  <div
+                    key={row.num}
+                    className="bg-zinc-950 p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 hover:bg-zinc-900/40 transition-colors"
+                    style={row.highlight ? { borderLeft: `3px solid ${EMBER}` } : {}}
+                  >
+                    <span className="font-mono text-3xl font-black text-zinc-700 flex-shrink-0">{row.num}</span>
+                    <div className="flex-1">
+                      <p className="font-black text-zinc-100 mb-1">{row.label}</p>
+                      <p className="text-sm text-zinc-400 leading-relaxed">{row.detail}</p>
+                      <p className="text-xs text-zinc-600 mt-1">{row.note}</p>
+                    </div>
+                    <p className="font-mono text-2xl font-black text-zinc-100 flex-shrink-0 md:text-right tabular-nums">{row.price}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Totaux */}
+              <div className="grid md:grid-cols-2 gap-px bg-zinc-800 max-w-3xl">
+                <div className="bg-zinc-950 p-8">
+                  <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">1ʳᵉ orchestration</p>
+                  <p className="font-mono text-5xl font-black tabular-nums mb-2">3 220 €</p>
+                  <p className="text-zinc-500 text-sm">HT · One-time payment · Paiement à la signature</p>
+                  <p className="text-zinc-600 text-xs mt-3">Écosystème (280) + Conception (2 450) + Garantie (490)</p>
+                </div>
+                <div className="bg-zinc-900/50 p-8">
+                  <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">2ᵉ orchestration & suivantes</p>
+                  <p className="font-mono text-5xl font-black tabular-nums mb-2" style={{ color: EMBER }}>2 540 €</p>
+                  <p className="text-zinc-500 text-sm">HT · One-time payment · L'écosystème est déjà en place</p>
+                  <p className="text-zinc-600 text-xs mt-3">Conception (2 450) + Extension garantie (90)</p>
+                </div>
+              </div>
+
+              {/* Règles */}
+              <div className="mt-8 max-w-3xl grid sm:grid-cols-2 gap-4">
+                {[
+                  'Audit terrain gratuit — sans engagement',
+                  'Paiement à la signature du devis',
+                  'Livraison garantie en 7 jours ouvrés',
+                  'Tout le périmètre est écrit avant démarrage',
+                  'Modification majeure = 50 % de la main d\'œuvre',
+                  'Nouvelle orchestration = nouveau devis',
+                ].map((r) => (
+                  <div key={r} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-zinc-600" strokeWidth={2} />
+                    <p className="text-sm text-zinc-400">{r}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
             {/* Product 01 CTA */}
             <div className="mt-16 flex flex-col sm:flex-row gap-5">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setQuizOpen(true)}
+                onClick={() => setContactOpen(true)}
                 className="px-12 py-5 bg-zinc-100 text-zinc-950 font-black text-base tracking-wide hover:bg-zinc-300 transition-colors"
               >
-                Demander mon Audit
+                Demander un Audit Terrain
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setContactOpen(true)}
+                onClick={() => setQuizOpen(true)}
                 className="px-12 py-5 bg-transparent text-zinc-100 font-black text-base border-2 border-zinc-700 hover:border-zinc-400 transition-colors"
               >
-                En savoir plus
+                Estimer mon ROI en ligne
               </motion.button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════
-          DIVIDER
-      ══════════════════════════════════════════════════════════ */}
+      {/* ── Divider ── */}
       <div className="px-6">
         <div className="max-w-6xl mx-auto">
           <div className="h-px bg-zinc-800" />
@@ -446,7 +521,7 @@ export default function Products() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════
-          PRODUCT 02
+          PRODUCT 02 — GÉNÉRIQUE
       ══════════════════════════════════════════════════════════ */}
       <section id="product-02" className="scroll-mt-24 py-32 px-6">
         <div className="max-w-6xl mx-auto">
@@ -458,59 +533,98 @@ export default function Products() {
           >
             {/* Section header */}
             <div className="flex items-end gap-6 mb-4 overflow-hidden">
-              <span className="text-[10rem] font-black leading-none select-none flex-shrink-0 text-zinc-900">
-                02
-              </span>
+              <span className="text-[10rem] font-black leading-none select-none flex-shrink-0 text-zinc-900">02</span>
               <div className="pb-4">
                 <p className="uppercase tracking-[0.25em] text-xs text-zinc-500 font-bold mb-3">
-                  Abonnement — Produit Scalable
+                  Abonnement mensuel — Porte d'entrée
                 </p>
                 <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                  Workflows Main Stream
-                  <br />& Playbooks<span style={{ color: EMBER }}>.</span>
+                  Offre Générique
+                  <br />Sans Engagement<span style={{ color: EMBER }}>.</span>
                 </h2>
               </div>
             </div>
 
-            <p className="text-lg text-zinc-400 max-w-3xl leading-relaxed mb-20 pl-8 border-l-2 border-zinc-800">
-              Pour adresser un public plus large, nous proposons des workflows déjà conçus en libre
-              accès sur abonnement, que nous hébergeons et maintenons. Accompagnés de bibliothèques
-              de Playbooks — guides d'implémentation et{' '}
-              <span className="text-zinc-100">templates no-code</span> pour Make, n8n et Zapier.
+            <p className="text-lg text-zinc-400 max-w-3xl leading-relaxed mb-16 pl-8 border-l-2 border-zinc-800">
+              L'offre Générique capte un maximum de volume avec une friction minimale.
+              Le client démarre avec un questionnaire gratuit en ligne, reçoit un rapport personnalisé
+              en 20 minutes, puis souscrit à un abonnement mensuel résiliable à tout moment.{' '}
+              <span className="text-zinc-100">Pas d'engagement minimum.</span>
             </p>
 
-            {/* Features grid */}
+            {/* Comment ça fonctionne */}
+            <div className="mb-16">
+              <p className="uppercase tracking-[0.3em] text-xs text-zinc-500 mb-8">Comment ça fonctionne</p>
+              <div className="grid md:grid-cols-3 gap-px bg-zinc-800">
+                {[
+                  {
+                    step: '01',
+                    label: 'Questionnaire guidé',
+                    desc: '20 minutes en ligne. COAL génère automatiquement un rapport identifiant vos 3 quick wins prioritaires avec une estimation du temps gagné par mois.',
+                    tag: 'Gratuit · Sans inscription',
+                  },
+                  {
+                    step: '02',
+                    label: 'Restitution & devis',
+                    desc: 'Un call de restitution de 30 minutes est offert. Si vous souhaitez activer vos workflows, vous souscrivez à l\'abonnement mensuel selon votre secteur.',
+                    tag: '30 min · Offert',
+                  },
+                  {
+                    step: '03',
+                    label: 'Activation immédiate',
+                    desc: 'Workflows standards pré-configurés déployés sur l\'infrastructure COAL. Accès au Command Center pour superviser. Résiliable à tout moment.',
+                    tag: 'Dès la souscription',
+                  },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.step}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="bg-zinc-950 p-10 hover:bg-zinc-900/50 transition-colors duration-500"
+                  >
+                    <p className="font-mono text-5xl font-black text-zinc-800 mb-6 select-none">{s.step}</p>
+                    <h3 className="text-xl font-black mb-3">{s.label}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-4">{s.desc}</p>
+                    <span className="inline-block px-3 py-1 text-xs font-bold tracking-wider uppercase text-zinc-400 border border-zinc-800">{s.tag}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Ce qui est inclus */}
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-zinc-800 mb-16">
               {[
                 {
                   icon: <Workflow className="w-8 h-8" strokeWidth={1.5} />,
-                  label: 'Bibliothèque de workflows',
-                  desc: "Des workflows opérationnels déjà testés et validés, couvrant les cas d'usage les plus fréquents par secteur.",
+                  label: 'Workflows par secteur',
+                  desc: "Workflows pré-configurés pour votre secteur d'activité (comptabilité, immobilier, médical, PME).",
                 },
                 {
                   icon: <Repeat className="w-8 h-8" strokeWidth={1.5} />,
                   label: 'Hébergement & Maintenance',
-                  desc: "COAL héberge et maintient vos workflows actifs. Mises à jour, corrections et évolutions incluses dans l'abonnement.",
+                  desc: 'Infrastructure hébergée et maintenue par COAL. Mises à jour et corrections incluses.',
                 },
                 {
-                  icon: <Package className="w-8 h-8" strokeWidth={1.5} />,
-                  label: 'Libre accès sur abonnement',
-                  desc: "Accédez à l'intégralité de la bibliothèque sans limite. De nouveaux workflows sont ajoutés chaque mois.",
-                },
-                {
-                  icon: <BookOpen className="w-8 h-8" strokeWidth={1.5} />,
-                  label: 'Playbooks no-code',
-                  desc: 'Guides d\'implémentation pas à pas pour Make, n8n et Zapier. Connectez vous-mêmes vos processus sans expertise technique.',
+                  icon: <LayoutDashboard className="w-8 h-8" strokeWidth={1.5} />,
+                  label: 'Command Center',
+                  desc: "Accès à l'interface de supervision COAL pour monitorer vos workflows actifs.",
                 },
                 {
                   icon: <Zap className="w-8 h-8" strokeWidth={1.5} />,
-                  label: 'Templates clé en main',
-                  desc: 'Templates directement importables dans votre stack no-code préféré. Zéro configuration complexe requise.',
+                  label: 'Coûts d\'API inclus',
+                  desc: "Les coûts d'API sont inclus dans l'abonnement pour un usage standard. Pas de surprise.",
+                },
+                {
+                  icon: <Package className="w-8 h-8" strokeWidth={1.5} />,
+                  label: 'Support standard',
+                  desc: 'Accompagnement inclus pour la prise en main et les questions de configuration.',
                 },
                 {
                   icon: <Shield className="w-8 h-8" strokeWidth={1.5} />,
-                  label: 'Compatibilité universelle',
-                  desc: 'Conçus pour s\'intégrer avec Make (Integromat), n8n, Zapier et les principales solutions du marché.',
+                  label: 'Zéro engagement',
+                  desc: "Résiliable à tout moment. Pas d'engagement minimum. Vous payez mois par mois.",
                 },
               ].map((f, i) => (
                 <motion.div
@@ -529,57 +643,109 @@ export default function Products() {
               ))}
             </div>
 
-            {/* Platform compatibility banner */}
-            <div className="border border-zinc-800 p-8 mb-14">
-              <p className="uppercase tracking-[0.35em] text-xs text-zinc-600 mb-8 text-center">
-                Plateformes compatibles
-              </p>
-              <div className="flex justify-center items-center gap-12 md:gap-20 flex-wrap">
-                {[
-                  { name: 'Make', sub: 'Integromat' },
-                  { name: 'n8n', sub: 'Open-source' },
-                  { name: 'Zapier', sub: 'No-code' },
-                ].map((p) => (
-                  <motion.div
-                    key={p.name}
-                    whileHover={{ y: -2 }}
-                    className="text-center group"
-                  >
-                    <p className="text-3xl font-black text-zinc-600 group-hover:text-zinc-200 transition-colors tracking-tight">
-                      {p.name}
-                    </p>
-                    <p className="text-xs text-zinc-700 group-hover:text-zinc-500 transition-colors tracking-widest uppercase mt-1">
-                      {p.sub}
-                    </p>
-                  </motion.div>
-                ))}
+            {/* Prix Générique */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 gap-px bg-zinc-800 max-w-2xl mb-14"
+            >
+              <div className="bg-zinc-950 p-8">
+                <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">Audit de départ</p>
+                <p className="font-mono text-5xl font-black tabular-nums mb-2">Gratuit</p>
+                <p className="text-zinc-500 text-sm">Questionnaire en ligne + rapport + call 30 min</p>
               </div>
-            </div>
+              <div className="bg-zinc-900/50 p-8">
+                <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">Abonnement mensuel</p>
+                <p className="font-mono text-5xl font-black tabular-nums mb-2">
+                  199<span className="text-2xl text-zinc-500"> – </span>399 €
+                </p>
+                <p className="text-zinc-500 text-sm">HT · Mensuel · Résiliable à tout moment</p>
+              </div>
+            </motion.div>
 
             {/* Product 02 CTA */}
             <div className="flex flex-col sm:flex-row gap-5">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setContactOpen(true)}
+                onClick={() => setQuizOpen(true)}
                 className="px-12 py-5 bg-zinc-100 text-zinc-950 font-black text-base tracking-wide hover:bg-zinc-300 transition-colors"
               >
-                Explorer les Workflows
+                Faire mon Audit Gratuit
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setQuizOpen(true)}
+                onClick={() => setContactOpen(true)}
                 className="px-12 py-5 bg-transparent text-zinc-100 font-black text-base border-2 border-zinc-700 hover:border-zinc-400 transition-colors"
               >
-                Demander un Audit
+                En savoir plus
               </motion.button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── CTA Banner ────────────────────────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════
+          TABLEAU COMPARATIF
+      ══════════════════════════════════════════════════════════ */}
+      <section className="py-32 px-6 border-t border-zinc-900">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="uppercase tracking-[0.3em] text-xs text-zinc-500 mb-6">Récapitulatif</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-16">
+              Comparer les deux offres<span style={{ color: EMBER }}>.</span>
+            </h2>
+
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-zinc-900">
+                    <th className="text-left p-5 text-xs uppercase tracking-widest text-zinc-500 font-bold w-1/3">Critère</th>
+                    <th className="text-left p-5 text-xs uppercase tracking-widest text-zinc-400 font-bold w-1/3">Générique</th>
+                    <th className="text-left p-5 text-xs uppercase tracking-widest font-bold w-1/3" style={{ color: EMBER }}>Custom ★</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { critere: 'Audit', gen: 'Questionnaire en ligne — 20 min', custom: 'Rencontre sur site — gratuit', customHighlight: false },
+                    { critere: 'Workflows', gen: 'Standards, pré-configurés par secteur', custom: 'Sur-mesure, conçus pour vos processus réels', customHighlight: false },
+                    { critere: 'IA embarquée', gen: 'Non — automatisations simples', custom: 'Oui — Claude API via OpenRouter', customHighlight: true },
+                    { critere: 'Infrastructure', gen: 'Hébergée chez COAL', custom: 'Chez le client (Hostinger + OpenRouter)', customHighlight: false },
+                    { critere: 'Paiement', gen: '199–399 € HT / mois', custom: 'One-time par orchestration', customHighlight: false },
+                    { critere: 'Délai', gen: 'Immédiat après souscription', custom: '7 jours ouvrés après signature', customHighlight: false },
+                    { critere: 'Garantie', gen: 'Support standard inclus', custom: '1 an sur bugs COAL (490 € + 90 €/orch.)', customHighlight: true },
+                    { critere: 'Engagement', gen: 'Mensuel, résiliable à tout moment', custom: 'Aucun — paiement à la livraison', customHighlight: false },
+                    { critere: 'Cible', gen: 'PME · Volume · Test sans risque', custom: 'Organisations avec besoin structuré', customHighlight: false },
+                  ].map((row, i) => (
+                    <tr key={row.critere} className={i % 2 === 0 ? 'bg-zinc-950' : 'bg-zinc-900/30'}>
+                      <td className="p-5 text-xs uppercase tracking-wider text-zinc-500 font-bold border-t border-zinc-900">{row.critere}</td>
+                      <td className="p-5 text-sm text-zinc-400 border-t border-zinc-900">{row.gen}</td>
+                      <td className="p-5 text-sm border-t border-zinc-900 font-medium" style={row.customHighlight ? { color: EMBER } : { color: '#e4e4e7' }}>{row.custom}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-10 p-6 border border-zinc-800 max-w-2xl">
+              <p className="text-zinc-400 text-sm leading-relaxed italic">
+                "Un client Générique satisfait est un futur client Custom. Un client Custom satisfait
+                revient commander l'orchestration suivante — sans qu'il soit nécessaire de le reconquérir."
+              </p>
+              <p className="text-zinc-600 text-xs mt-3 uppercase tracking-widest">COAL — Note commerciale interne</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── CTA Final ─────────────────────────────────────────── */}
       <section className="py-32 px-6 border-t border-zinc-900">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -604,19 +770,19 @@ export default function Products() {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setQuizOpen(true)}
+                onClick={() => setContactOpen(true)}
                 className="px-12 py-5 bg-zinc-100 text-zinc-950 font-black text-base tracking-wide hover:bg-zinc-300 transition-colors flex items-center gap-3"
               >
-                Démarrer par l'Audit
+                Demander un Audit Terrain
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setContactOpen(true)}
+                onClick={() => setQuizOpen(true)}
                 className="px-12 py-5 bg-transparent text-zinc-100 font-black text-base border-2 border-zinc-700 hover:border-zinc-400 transition-colors"
               >
-                Parler à un expert COAL
+                Faire mon Audit en ligne (gratuit)
               </motion.button>
             </div>
           </motion.div>
