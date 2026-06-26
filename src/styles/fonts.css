@@ -1,0 +1,28 @@
+/* ──────────────────────────────────────────────────────────────
+   COAL — Typographie
+   Archivo        → grotesque industriel, poids 400→900 (honore font-black)
+   JetBrains Mono → données / labels « command center » (terminal feel)
+   ────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --font-family-sans: 'Archivo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+}
+
+html {
+  font-family: var(--font-family-sans);
+}
+
+body {
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Chiffres alignés (tabular) sur les données pour éviter le « saut » à l'animation */
+.font-mono,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
