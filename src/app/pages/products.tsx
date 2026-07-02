@@ -419,7 +419,7 @@ export default function Products() {
                     num: '01',
                     label: 'Mise en place de l\'écosystème technique',
                     detail: 'Serveur VPS Hostinger (2 ans) + provision OpenRouter + installation n8n, DNS, sécurisation',
-                    price: '280 €',
+                    price: 'Sur demande',
                     note: 'Coûts réels refacturés · Disparaît dès la 2e orchestration',
                     highlight: false,
                   },
@@ -427,16 +427,16 @@ export default function Products() {
                     num: '02',
                     label: 'Conception & déploiement',
                     detail: '5j remote (setup, développement, intégrations, docs) + 2j sur site (tests, formation, livraison)',
-                    price: '2 450 €',
-                    note: '350 €/j × 7 jours ouvrés',
+                    price: 'Sur demande',
+                    note: '7 jours ouvrés',
                     highlight: false,
                   },
                   {
                     num: '03',
                     label: 'Garantie de bon fonctionnement — 1 an',
                     detail: 'Bugs liés à la conception COAL couverts 12 mois · Intervention sous 48h ouvrées',
-                    price: '490 €',
-                    note: '1ʳᵉ orchestration · +90 € par orchestration suivante',
+                    price: 'Sur demande',
+                    note: '1ʳᵉ orchestration incluse · Renouvelable à chaque nouvelle orchestration',
                     highlight: true,
                   },
                 ].map((row) => (
@@ -451,7 +451,7 @@ export default function Products() {
                       <p className="text-sm text-zinc-400 leading-relaxed">{row.detail}</p>
                       <p className="text-xs text-zinc-600 mt-1">{row.note}</p>
                     </div>
-                    <p className="font-mono text-2xl font-black text-zinc-100 flex-shrink-0 md:text-right tabular-nums">{row.price}</p>
+                    <p className="font-mono text-lg font-black text-zinc-100 flex-shrink-0 md:text-right">{row.price}</p>
                   </div>
                 ))}
               </div>
@@ -460,15 +460,13 @@ export default function Products() {
               <div className="grid md:grid-cols-2 gap-px bg-zinc-800 max-w-3xl">
                 <div className="bg-zinc-950 p-8">
                   <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">1ʳᵉ orchestration</p>
-                  <p className="font-mono text-5xl font-black tabular-nums mb-2">3 220 €</p>
+                  <p className="font-mono text-4xl font-black mb-2">Sur demande</p>
                   <p className="text-zinc-500 text-sm">HT · One-time payment · Paiement à la signature</p>
-                  <p className="text-zinc-600 text-xs mt-3">Écosystème (280) + Conception (2 450) + Garantie (490)</p>
                 </div>
                 <div className="bg-zinc-900/50 p-8">
                   <p className="uppercase tracking-[0.2em] text-xs text-zinc-500 mb-2">2ᵉ orchestration & suivantes</p>
-                  <p className="font-mono text-5xl font-black tabular-nums mb-2" style={{ color: EMBER }}>2 540 €</p>
+                  <p className="font-mono text-4xl font-black mb-2" style={{ color: EMBER }}>Sur demande</p>
                   <p className="text-zinc-500 text-sm">HT · One-time payment · L'écosystème est déjà en place</p>
-                  <p className="text-zinc-600 text-xs mt-3">Conception (2 450) + Extension garantie (90)</p>
                 </div>
               </div>
 
